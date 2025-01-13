@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: dynamic-plugin-root-http-middleware
-  description: An example set of dynamic plugins that show how to add custom middleware to RHDH
+  name: dynamic-plugins-custom-authentication-module
+  description: An example set of dynamic plugins that show how to add an authentication provider to RHDH
 spec:
   type: example
   owner: gashcrumb@gmail.com

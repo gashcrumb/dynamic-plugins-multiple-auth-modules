@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-plugins-example-root-http-middleware",
+  "name": "dynamic-plugins-custom-authentication-provider",
   "version": "1.0.0",
   "private": true,
   "engines": {
@@ -12,7 +12,6 @@
     "clean": "backstage-cli repo clean",
     "test": "backstage-cli repo test",
     "test:all": "backstage-cli repo test --coverage",
-    "test:e2e": "playwright test",
     "fix": "backstage-cli repo fix",
     "lint": "backstage-cli repo lint --since origin/main",
     "lint:all": "backstage-cli repo lint",
@@ -27,10 +26,9 @@
     ]
   },
   "devDependencies": {
-    "@backstage/cli": "0.28.2",
+    "@backstage/cli": "0.29.4",
     "@backstage/e2e-test-utils": "^0.1.1",
-    "@janus-idp/cli": "1.18.0",
-    "@playwright/test": "^1.32.3",
+    "@janus-idp/cli": "1.19.1",
     "@spotify/prettier-config": "^12.0.0",
     "concurrently": "^8.0.0",
     "lerna": "^7.3.0",
