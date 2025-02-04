@@ -1,1 +1,67 @@
-# this file is not used in this example
+
+# Base configuration file for this example, most of the
+# interesting settings are in:
+#
+# ./plugins/custom-authentication-provider-module/app-config.yaml
+# ./plugins/custom-authentication-provider-module-backend/app-config.yaml
+#
+#
+
+app:
+  title: RHDH Multiple Github Auth Provider Example
+  baseUrl: http://${HOSTNAME:-localhost}:7007
+
+backend:
+  auth:
+    keys:
+      - secret: development
+  baseUrl: http://${HOSTNAME:-localhost}:7007
+  listen:
+    host: ${HOSTNAME:-localhost}
+    port: 7007
+  csp:
+    connect-src: ["'self'", 'http:', 'https:']
+    upgrade-insecure-requests: false
+  cors:
+    origin: ${BASE_URL}
+    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    credentials: true
+  database:
+    client: better-sqlite3
+    connection: ':memory:'
+
+integrations: {}
+
+proxy:
+  endpoints: {}
+auth:
+  environment: development  
+  providers:
+    guest:
+      dangerouslyAllowOutsideDevelopment: true
+    github:
+      development:
+        clientId: ${GITHUB_APP_CLIENT_ID}
+        clientSecret: ${GITHUB_APP_CLIENT_SECRET}
+    github-two:
+      development:
+        clientId: ${GITHUB_APP_TWO_CLIENT_ID}
+        clientSecret: ${GITHUB_APP_TWO_CLIENT_SECRET}
+    microsoft:
+      development:
+        clientId: ${AZURE_CLIENT_ID}
+        clientSecret: ${AZURE_CLIENT_SECRET}
+        tenantId: ${AZURE_TENANT_ID}
+
+
+
+dynamicPlugins:
+  rootDirectory: dynamic-plugins-root
+  frontend:
+    custom-authentication-provider-module:
+      apiFactories:
+        - importName: ghTwoApi
+        - importName: customScmAuthApiFactory
+      components:
+        - name: SignInPage
+          importName: CustomSignInPage

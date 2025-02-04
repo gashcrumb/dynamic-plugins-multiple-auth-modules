@@ -1,6 +1,6 @@
 {
-  "name": "immobiliarelabs-backstage-plugin-ldap-auth",
-  "version": "6.7.0",
+  "name": "custom-authentication-provider-module",
+  "version": "0.0.1",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "license": "Apache-2.0",
@@ -11,10 +11,10 @@
   "backstage": {
     "role": "frontend-plugin",
     "supported-versions": "1.32.6",
-    "pluginId": "immobiliarelabs-ldap-auth",
+    "pluginId": "custom-authentication-provider-module",
     "pluginPackages": [
-      "immobiliarelabs-backstage-plugin-ldap-auth",
-      "immobiliarelabs-backstage-plugin-ldap-auth-backend"
+      "custom-authentication-provider-module",
+      "custom-authentication-provider-module-backend"
     ]
   },
   "exports": {
@@ -39,19 +39,23 @@
     "export-dynamic:clean": "run export-dynamic --clean"
   },
   "dependencies": {
-    "@immobiliarelabs/backstage-plugin-ldap-auth": "4.3.1"
+    "@backstage/core-app-api": "1.15.1",
+    "@backstage/core-components": "0.15.1",
+    "@backstage/core-plugin-api": "1.10.0",
+    "@backstage/integration-react": "1.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@backstage/cli": "0.29.4",
-    "@janus-idp/cli": "1.19.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@backstage/cli": "0.28.2",
+    "@janus-idp/cli": "1.18.6",
+    "@types/react": "^18.0.0",
     "react-router": "^6.4.5",
     "react-router-dom": "^6.4.5",
     "typescript": "5.6.3"
   },
   "peerDependencies": {
-    "react": "^16.13.1 || ^17.0.0"
+    "react": "^16.13.1 || ^17.0.0 || ^18.0.0"
   },
   "files": [
     "dist",

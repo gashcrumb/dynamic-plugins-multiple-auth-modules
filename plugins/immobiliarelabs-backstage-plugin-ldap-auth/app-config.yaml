@@ -1,8 +1,0 @@
-
-dynamicPlugins:
-  frontend:
-    immobiliarelabs-backstage-plugin-ldap-auth:
-      components:
-        - name: SignInPage
-          module: PluginRoot
-          importName: SignInPage

@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: dynamic-plugins-custom-authentication-module
-  description: An example set of dynamic plugins that show how to add an authentication provider to RHDH
+  name: dynamic-plugins-multiple-github-authentication-provider
+  description: An example set of dynamic plugins that shows how to set up authentication against two different github configurations
 spec:
   type: example
   owner: gashcrumb@gmail.com
