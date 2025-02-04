@@ -1,4 +1,9 @@
-import { ScmAuth, scmAuthApiRef } from '@backstage/integration-react';
+import {
+  ScmAuth,
+  scmAuthApiRef,
+  ScmIntegrationsApi,
+  scmIntegrationsApiRef,
+} from '@backstage/integration-react';
 import {
   ApiRef,
   BackstageIdentityApi,
@@ -14,13 +19,19 @@ import {
 } from '@backstage/core-plugin-api';
 import { GithubAuth } from '@backstage/core-app-api';
 
-export const ghTwoAuthApiRef: ApiRef<
+export const scmIntegrationApi = createApiFactory({
+  api: scmIntegrationsApiRef,
+  deps: { configApi: configApiRef },
+  factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
+});
+
+const ghTwoAuthApiRef: ApiRef<
   OAuthApi & ProfileInfoApi & BackstageIdentityApi & SessionApi
 > = createApiRef({
   id: 'core.auth.github.two',
 });
 
-export const ghTwoApi:any = createApiFactory({
+export const ghTwoApi: any = createApiFactory({
   api: ghTwoAuthApiRef,
   deps: {
     discoveryApi: discoveryApiRef,
@@ -38,12 +49,14 @@ export const ghTwoApi:any = createApiFactory({
     }),
 });
 
-export const customScmAuthApiFactory = createApiFactory({
+export const scmAuthApi = createApiFactory({
   api: scmAuthApiRef,
   deps: { githubAuthApi: githubAuthApiRef, ghTwoAuthApi: ghTwoAuthApiRef },
-  factory: ({ githubAuthApi, ghTwoAuthApi }) =>
-    ScmAuth.merge(
-      ScmAuth.forGithub(githubAuthApi),
+  factory: ({ githubAuthApi, ghTwoAuthApi }) => {
+    console.log('Custom ScmAuth API factory function called');
+    return ScmAuth.merge(
       ScmAuth.forGithub(ghTwoAuthApi),
-    ),
+      ScmAuth.forGithub(githubAuthApi, { host: 'my.enterprise.github' }),
+    );
+  },
 });

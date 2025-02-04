@@ -63,7 +63,8 @@ dynamicPlugins:
     custom-authentication-provider-module:
       apiFactories:
         - importName: ghTwoApi
-        - importName: customScmAuthApiFactory
+        - importName: scmIntegrationApi
+        - importName: scmAuthApi
       components:
         - name: SignInPage
           importName: CustomSignInPage

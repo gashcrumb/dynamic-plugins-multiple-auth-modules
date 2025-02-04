@@ -1,5 +1,4 @@
 import {
-  coreServices,
   createBackendModule,
 } from '@backstage/backend-plugin-api';
 import {
@@ -14,13 +13,11 @@ import {
 
 export const customAuthenticationProvidersModule = createBackendModule({
   pluginId: 'auth',
-  moduleId: 'auth.providers',
+  moduleId: 'github-two-provider',
   register(reg) {
     reg.registerInit({
       deps: {
-        config: coreServices.rootConfig,
         providers: authProvidersExtensionPoint,
-        logger: coreServices.logger,
       },
       async init({ providers }) {
         providers.registerProvider({

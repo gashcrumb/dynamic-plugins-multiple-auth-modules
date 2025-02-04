@@ -53,15 +53,14 @@ auth:
         clientSecret: ${AZURE_CLIENT_SECRET}
         tenantId: ${AZURE_TENANT_ID}
 
-
-
 dynamicPlugins:
   rootDirectory: dynamic-plugins-root
   frontend:
     custom-authentication-provider-module:
       apiFactories:
         - importName: ghTwoApi
-        - importName: customScmAuthApiFactory
+        - importName: scmIntegrationApi
+        - importName: scmAuthApi
       components:
         - name: SignInPage
           importName: CustomSignInPage
