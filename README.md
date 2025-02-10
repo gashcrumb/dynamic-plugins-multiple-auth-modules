@@ -63,11 +63,14 @@ dynamicPlugins:
     custom-authentication-provider-module:
       apiFactories:
         - importName: ghTwoApi
-        - importName: scmIntegrationApi
         - importName: scmAuthApi
       components:
         - name: SignInPage
           importName: CustomSignInPage
+      providerSettings:
+        - title: Github Two
+          description: Sign in with GitHub Org Two
+          provider: github-two
 ```
 
 ## Building the Example
