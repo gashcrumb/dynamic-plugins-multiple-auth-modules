@@ -18,7 +18,6 @@ const providers = [
 export function CustomSignInPage(props: any): React.JSX.Element {
   const configApi = useApi(configApiRef);
   const isDevEnv = configApi.getString('auth.environment') === 'development';
-  debugger;
   return (
     <SignInPage
       {...props}

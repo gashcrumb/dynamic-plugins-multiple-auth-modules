@@ -61,16 +61,12 @@ dynamicPlugins:
   rootDirectory: dynamic-plugins-root
   frontend:
     custom-authentication-provider-module:
-      apiFactories:
-        - importName: ghTwoApi
-        - importName: scmAuthApi
-      components:
-        - name: SignInPage
-          importName: CustomSignInPage
+      signInPage:
+        importName: CustomSignInPage
       providerSettings:
         - title: Github Two
           description: Sign in with GitHub Org Two
-          provider: github-two
+          provider: core.auth.github-two
 ```
 
 ## Building the Example
