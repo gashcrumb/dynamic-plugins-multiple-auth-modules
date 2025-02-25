@@ -18,7 +18,7 @@
     "prettier:check": "prettier --check .",
     "new": "backstage-cli new --scope internal",
     "export-local": "janus-cli package package-dynamic-plugins --force-export --export-to ${DYNAMIC_PLUGINS_ROOT:-./deploy}",
-    "package-dynamic-plugins": "janus-cli package package-dynamic-plugins --force-export --tag ${PLUGIN_IMAGE_TAG:-localhost:5000/${USER}/custom-authentication-module:latest}"
+    "package-dynamic-plugins": "janus-cli package package-dynamic-plugins --force-export --tag ${PLUGIN_IMAGE_TAG:-localhost:5000/${USER}/multiple-authentication-module:latest}"
   },
   "workspaces": {
     "packages": [
