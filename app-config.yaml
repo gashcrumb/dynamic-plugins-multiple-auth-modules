@@ -9,15 +9,14 @@
 
 app:
   title: RHDH Multiple Github Auth Provider Example
-  baseUrl: http://${HOSTNAME:-localhost}:7007
+  baseUrl: http://localhost:7007
 
 backend:
   auth:
     keys:
       - secret: development
-  baseUrl: http://${HOSTNAME:-localhost}:7007
+  baseUrl: http://localhost:7007
   listen:
-    host: ${HOSTNAME:-localhost}
     port: 7007
   csp:
     connect-src: ["'self'", 'http:', 'https:']
@@ -52,6 +51,11 @@ auth:
         clientId: ${AZURE_CLIENT_ID}
         clientSecret: ${AZURE_CLIENT_SECRET}
         tenantId: ${AZURE_TENANT_ID}
+        signIn:
+          resolvers:
+            - resolver: userIdMatchingUserEntityAnnotation
+        
+        
 
 dynamicPlugins:
   rootDirectory: dynamic-plugins-root
